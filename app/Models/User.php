@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Transactions;
+use App\Models\TransactionItems;
 
 class User extends Authenticatable
 {
@@ -27,6 +29,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'phone',
+        'roles',
     ];
 
     /**
@@ -58,4 +63,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'users_id', 'id');
+    }
+
+    public function transactionItems()
+    {
+        return $this->hasMany(TransactionItems::class, 'users_id', 'id');
+    }
+
+
 }
