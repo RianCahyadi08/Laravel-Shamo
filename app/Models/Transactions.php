@@ -18,4 +18,14 @@ class Transactions extends Model
         'status',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id', 'id');
+    }
+
+    public function items()
+    {
+        return $this->hasMany(TransactionItems::class, 'transactions_id', 'id');
+    }
+
 }
