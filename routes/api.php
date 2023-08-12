@@ -21,7 +21,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Product Category
-Route::get('product-category', [ProductCategoryController::class, 'getProductCategory'])->name('product-category');
-
-// Product
-Route::get('product', [ProductController::class, 'getProduct'])->name('product');
+Route::get('product-categories', [ProductCategoryController::class, 'getProductCategory']);
+Route::get('products', [ProductController::class, 'all']);
